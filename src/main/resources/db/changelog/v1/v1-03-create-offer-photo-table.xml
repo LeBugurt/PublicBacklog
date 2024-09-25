@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="03-create-table-offer-photo" author="ShentsevA">
+        <createTable tableName="offer_photo">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="photo" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="offer_id" type="uuid">
+                <constraints nullable="false" foreignKeyName="fk_offer_id" references="offer(id)" deleteCascade="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

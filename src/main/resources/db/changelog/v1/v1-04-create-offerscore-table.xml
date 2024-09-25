@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="04-create-table-offer-score" author="ShentsevA">
+        <createTable tableName="offer_score">
+            <column name="type" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="offer_id" type="uuid">
+                <constraints nullable="false" foreignKeyName="fk_offer_score_id" references="offer(id)" deleteCascade="true"/>
+            </column>
+
+            <column name="worker_id" type="uuid">
+                <constraints nullable="false" foreignKeyName="fk_worker_score_id" references="worker(id)" deleteCascade="true"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey tableName="offer_score" columnNames="offer_id, worker_id" constraintName="pk_offer_score"/>
+    </changeSet>
+</databaseChangeLog>

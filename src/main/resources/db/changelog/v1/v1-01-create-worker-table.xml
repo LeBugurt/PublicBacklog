@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="01-create-table-worker" author="ShentsevA">
+        <createTable tableName="worker">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="surname" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="patronymic" type="varchar(128)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="positional" type="varchar(128)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="id_department" type="uuid">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="phone" type="varchar(14)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="birthdate" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="email" type="varchar(64)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="telegram" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="date_start_work" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="probation_period" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="photo" type="varchar(128)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="id_director" type="uuid">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="id_office" type="uuid">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
