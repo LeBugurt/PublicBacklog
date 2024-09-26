@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface OfferPhotoRepository extends JpaRepository<OfferPhoto, UUID> {
-    List<OfferPhoto> findByOfferId(UUID offer_id);
+    List<OfferPhoto> findByOfferId(UUID offerId);
 }

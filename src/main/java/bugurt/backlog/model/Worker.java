@@ -11,10 +11,7 @@ import java.util.UUID;
 @Table(name = "worker")
 @Getter
 @Setter
-public class Worker {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+public class Worker extends BaseEntity{
 
     private String surname;
 

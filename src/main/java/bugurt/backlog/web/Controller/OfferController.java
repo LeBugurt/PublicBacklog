@@ -25,6 +25,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("api/v1/offer")
 public class OfferController {
+
     private final OfferService offerService;
     private final OfferPhotoService offerPhotoService;
     private final OfferScoreService offerScoreService;
@@ -39,7 +40,7 @@ public class OfferController {
 
     @PostMapping
     public UUID createOffer(@RequestPart("offer") OfferDto offerDto,
-                            @RequestPart("files") MultipartFile[] files) {
+                            @RequestPart(value = "files", required = false) MultipartFile[] files) {
         if (files.length > 10) {
             throw new FileLoadException("You cannot upload more than 10 photos");
         }
@@ -48,16 +49,18 @@ public class OfferController {
 
         try {
             for (MultipartFile file : files) {
-                if (!file.isEmpty()) {
-                    Path path = Paths.get(uploadDir);
-                    if (!Files.exists(path)) {
-                        Files.createDirectories(path);
-                    }
+                if (file != null){
+                    if (!file.isEmpty()) {
+                        Path path = Paths.get(uploadDir);
+                        if (!Files.exists(path)) {
+                            Files.createDirectories(path);
+                        }
 
-                    String fileName = file.getOriginalFilename();
-                    Path filePath = Paths.get(uploadDir, fileName);
-                    Files.write(filePath, file.getBytes());
-                    offerPhotoService.createOfferPhoto(filePath.toString(), offerID);
+                        String fileName = file.getOriginalFilename();
+                        Path filePath = Paths.get(uploadDir, fileName);
+                        Files.write(filePath, file.getBytes());
+                        offerPhotoService.createOfferPhoto(filePath.toString(), offerID);
+                    }
                 }
             }
         } catch (IOException e) {

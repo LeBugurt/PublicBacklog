@@ -15,6 +15,7 @@ import java.util.UUID;
 @Service
 @AllArgsConstructor
 public class OfferScoreServiceImpl implements OfferScoreService {
+
     private final OfferScoreRepository offerScoreRepository;
 
     @Override

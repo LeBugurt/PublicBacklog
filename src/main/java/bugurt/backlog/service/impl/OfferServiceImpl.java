@@ -16,6 +16,7 @@ import java.util.UUID;
 @Service
 @AllArgsConstructor
 public class OfferServiceImpl implements OfferService {
+
     private final OfferRepository offerRepository;
     private final OfferMapper offerMapper;
 

@@ -13,8 +13,8 @@ import java.util.UUID;
 @Service
 @AllArgsConstructor
 public class OfferPhotoServiceImpl implements OfferPhotoService {
-    private final OfferPhotoRepository offerPhotoRepository;
 
+    private final OfferPhotoRepository offerPhotoRepository;
 
     @Override
     public UUID createOfferPhoto(String PathPhoto, UUID offerId) {
