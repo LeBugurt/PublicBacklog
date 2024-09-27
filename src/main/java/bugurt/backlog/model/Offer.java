@@ -10,10 +10,7 @@ import java.util.UUID;
 @Table(name = "offer")
 @Getter
 @Setter
-public class Offer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+public class Offer extends BaseEntity {
 
     private String header;
 

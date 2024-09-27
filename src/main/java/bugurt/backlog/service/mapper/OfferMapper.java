@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OfferMapper {
+
     public Offer toOffer(OfferDto offerDto) {
         if (offerDto == null) {
             return null;

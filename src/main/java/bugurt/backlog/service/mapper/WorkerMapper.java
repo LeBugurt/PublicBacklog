@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class WorkerMapper {
+
     public Worker toWorker(WorkerDto workerDto) {
         if (workerDto == null) {
             return null;

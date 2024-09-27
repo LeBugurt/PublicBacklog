@@ -12,6 +12,7 @@ import java.util.UUID;
 @Setter
 @IdClass(OfferScoreId.class)
 public class OfferScore {
+
     @Enumerated(EnumType.STRING)
     private OfferScoreType type;
 

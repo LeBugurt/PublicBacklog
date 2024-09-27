@@ -19,6 +19,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("api/v1/user")
 public class WorkerController {
+
     private final WorkerService workerService;
 
     private final String uploadDir = "src/main/resources/img";
@@ -30,19 +31,21 @@ public class WorkerController {
 
     @PostMapping
     public UUID createWorker(@RequestPart("worker") WorkerDto workerDto,
-                             @RequestPart("photo") MultipartFile photo) {
+                             @RequestPart(value = "photo", required = false) MultipartFile photo) {
 
         try {
-            Path path = Paths.get(uploadDir);
-            if (!Files.exists(path)) {
-                Files.createDirectories(path);
+            if (photo != null && !photo.isEmpty()) {
+                Path path = Paths.get(uploadDir);
+                if (!Files.exists(path)) {
+                    Files.createDirectories(path);
+                }
+
+                String fileName = photo.getOriginalFilename();
+                Path filePath = Paths.get(uploadDir, fileName);
+                Files.write(filePath, photo.getBytes());
+
+                workerDto.setPhoto(filePath.toString());
             }
-
-            String fileName = photo.getOriginalFilename();
-            Path filePath = Paths.get(uploadDir, fileName);
-            Files.write(filePath, photo.getBytes());
-
-            workerDto.setPhoto(filePath.toString());
 
             return workerService.createWorker(workerDto);
         } catch (IOException e) {

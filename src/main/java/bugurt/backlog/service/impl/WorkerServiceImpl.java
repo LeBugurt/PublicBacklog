@@ -15,6 +15,7 @@ import java.util.UUID;
 @Service
 @AllArgsConstructor
 public class WorkerServiceImpl implements WorkerService {
+
     private final WorkerRepository workerRepository;
     private final WorkerMapper workerMapper;
 

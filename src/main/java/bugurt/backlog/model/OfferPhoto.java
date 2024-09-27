@@ -10,10 +10,7 @@ import java.util.UUID;
 @Table(name = "offer_photo")
 @Getter
 @Setter
-public class OfferPhoto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+public class OfferPhoto extends BaseEntity{
 
     private String photo;
 
