@@ -49,8 +49,7 @@ public class OfferController {
 
         try {
             for (MultipartFile file : files) {
-                if (file != null){
-                    if (!file.isEmpty()) {
+                    if (file != null && !file.isEmpty()) {
                         Path path = Paths.get(uploadDir);
                         if (!Files.exists(path)) {
                             Files.createDirectories(path);
@@ -61,7 +60,6 @@ public class OfferController {
                         Files.write(filePath, file.getBytes());
                         offerPhotoService.createOfferPhoto(filePath.toString(), offerID);
                     }
-                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
